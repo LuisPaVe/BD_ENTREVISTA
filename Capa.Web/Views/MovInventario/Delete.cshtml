@@ -1,0 +1,27 @@
+﻿@model Capa.Entidad.E_MovInventario
+
+<h2>Eliminar Movimiento</h2>
+
+<h4>¿Está seguro que desea eliminar este registro?</h4>
+
+<dl class="dl-horizontal">
+    <dt>Documento</dt>
+    <dd>@Model.NRO_DOCUMENTO</dd>
+
+    <dt>Item</dt>
+    <dd>@Model.COD_ITEM_2</dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.COD_CIA)
+    @Html.HiddenFor(m => m.COMPANIA_VENTA_3)
+    @Html.HiddenFor(m => m.ALMACEN_VENTA)
+    @Html.HiddenFor(m => m.TIPO_MOVIMIENTO)
+    @Html.HiddenFor(m => m.TIPO_DOCUMENTO)
+    @Html.HiddenFor(m => m.NRO_DOCUMENTO)
+    @Html.HiddenFor(m => m.COD_ITEM_2)
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+}

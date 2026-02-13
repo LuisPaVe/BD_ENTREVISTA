@@ -1,0 +1,74 @@
+﻿@model Capa.Entidad.E_MovInventario
+
+<h2>Editar Movimiento</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.COD_CIA)
+    @Html.HiddenFor(m => m.COMPANIA_VENTA_3)
+    @Html.HiddenFor(m => m.ALMACEN_VENTA)
+    @Html.HiddenFor(m => m.TIPO_MOVIMIENTO)
+    @Html.HiddenFor(m => m.TIPO_DOCUMENTO)
+    @Html.HiddenFor(m => m.NRO_DOCUMENTO)
+    @Html.HiddenFor(m => m.COD_ITEM_2)
+
+<div class="form-group">
+    @Html.LabelFor(m => m.PROVEEDOR)
+    @Html.TextBoxFor(m => m.PROVEEDOR, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.PROVEEDOR, "", new { @class = "text-danger" })
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.ALMACEN_DESTINO)
+    @Html.TextBoxFor(m => m.ALMACEN_DESTINO, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.ALMACEN_DESTINO, "", new { @class = "text-danger" })
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.CANTIDAD)
+    @Html.TextBoxFor(m => m.CANTIDAD, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.CANTIDAD, "", new { @class = "text-danger" })
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.DOC_REF_1)
+    @Html.TextBoxFor(m => m.DOC_REF_1, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.DOC_REF_1, "", new { @class = "text-danger" })
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.DOC_REF_2)
+    @Html.TextBoxFor(m => m.DOC_REF_2, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.DOC_REF_2, "", new { @class = "text-danger" })
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.DOC_REF_3)
+    @Html.TextBoxFor(m => m.DOC_REF_3, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.DOC_REF_3, "", new { @class = "text-danger" })
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.DOC_REF_4)
+    @Html.TextBoxFor(m => m.DOC_REF_4, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.DOC_REF_4, "", new { @class = "text-danger" })
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.DOC_REF_5)
+    @Html.TextBoxFor(m => m.DOC_REF_5, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.DOC_REF_5, "", new { @class = "text-danger" })
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.FECHA_TRANSACCION)
+    @Html.TextBoxFor(m => m.FECHA_TRANSACCION,
+        "{0:yyyy-MM-dd}",
+        new { @class = "form-control", @type = "date" })
+    @Html.ValidationMessageFor(m => m.FECHA_TRANSACCION, "", new { @class = "text-danger" })
+</div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+}

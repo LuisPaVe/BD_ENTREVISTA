@@ -1,0 +1,154 @@
+﻿@*@model IEnumerable<Capa.Entidad.E_MovInventario>*@
+@model Capa.Entidad.E_Paginado<Capa.Entidad.MovInventarioViewModel>
+<h2>Consulta Movimientos</h2>
+
+@using (Html.BeginForm("Index", "MovInventario", FormMethod.Get))
+{
+    <div class="row">
+
+        <div class="col-md-2">
+            <label>Fecha Inicio</label>
+            <input type="date" name="fechaInicio"
+                   value="@(ViewBag.FechaInicio != null ? ((DateTime)ViewBag.FechaInicio).ToString("yyyy-MM-dd") : "")"
+                   class="form-control" />
+        </div>
+
+        <div class="col-md-2">
+            <label>Fecha Fin</label>
+            <input type="date" name="fechaFin"
+                   value="@(ViewBag.FechaFin != null ? ((DateTime)ViewBag.FechaFin).ToString("yyyy-MM-dd") : "")"
+                   class="form-control" />
+        </div>
+
+        <div class="col-md-2">
+            <label>Tipo Movimiento</label>
+            <input type="text" name="tipoMovimiento"
+                   value="@ViewBag.TipoMovimiento"
+                   class="form-control" />
+        </div>
+
+        <div class="col-md-2">
+            <label>N° Documento</label>
+            <input type="text" name="nroDocumento"
+                   value="@ViewBag.NroDocumento"
+                   class="form-control" />
+        </div>
+
+        <div class="col-md-2">
+            <label>&nbsp;</label>
+            <button type="submit" class="btn btn-primary form-control">
+                Buscar
+            </button>
+        </div>
+
+        <div class="col-md-2">
+            <label>&nbsp;</label>
+            <a href="@Url.Action("Index")" class="btn btn-secondary form-control">
+                Limpiar
+            </a>
+        </div>
+
+    </div>
+}
+<h2>Movimientos Inventario</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Movimiento", "Create", null,
+        new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>COD_CIA</th>
+        <th>TIPO_DOCUMENTO</th>
+        <th>DOCUMENTO</th>
+        <th>ITEM</th>
+        <th>CANTIDAD</th>
+        <th>FECHA TRANSACCION</th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model.Data)
+    {
+
+        <tr>
+            <td>@item.COD_CIA</td>
+            <td>@item.TIPO_DOCUMENTO</td>
+            <td>@item.NRO_DOCUMENTO</td>
+            <td>@item.COD_ITEM_2</td>
+            <td>@item.CANTIDAD</td>
+            <td>@item.FECHA_TRANSACCION</td>
+            <td>
+                @Html.ActionLink("Detalle", "Details", new
+           {
+               id = item.IdSeguro
+           }, new { @class = "btn btn-info btn-sm" })
+
+                @Html.ActionLink("Editar", "Edit", new
+           {
+               id = item.IdSeguro
+           }, new { @class = "btn btn-primary btn-sm" })
+
+                @Html.ActionLink("Eliminar", "Delete", new
+           {
+               id = item.IdSeguro
+           }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+</table>
+<hr />
+
+<div>
+    Página @Model.PageNumber de @Model.TotalPages
+</div>
+
+<div>
+    @if (Model.PageNumber > 1)
+    {
+        @Html.ActionLink("<< Anterior", "Index",
+              new
+              {
+                  page = Model.PageNumber - 1,
+                  fechaInicio = ViewBag.FechaInicio,
+                  fechaFin = ViewBag.FechaFin,
+                  tipoMovimiento = ViewBag.TipoMovimiento,
+                  nroDocumento = ViewBag.NroDocumento
+              },
+             new { @class = "btn btn-secondary btn-sm" })
+    }
+
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        if (i == Model.PageNumber)
+        {
+            <span class="btn btn-dark btn-sm">@i</span>
+        }
+        else
+        {
+            @Html.ActionLink(i.ToString(), "Index",
+                new
+                {
+                    page = i,
+                    fechaInicio = ViewBag.FechaInicio,
+                    fechaFin = ViewBag.FechaFin,
+                    tipoMovimiento = ViewBag.TipoMovimiento,
+                    nroDocumento = ViewBag.NroDocumento
+                },
+                 new { @class = "btn btn-outline-secondary btn-sm" })
+        }
+    }
+
+    @if (Model.PageNumber < Model.TotalPages)
+    {
+        @Html.ActionLink("Siguiente >>", "Index",
+            new
+            {
+                page = Model.PageNumber + 1,
+                fechaInicio = ViewBag.FechaInicio,
+                fechaFin = ViewBag.FechaFin,
+                tipoMovimiento = ViewBag.TipoMovimiento,
+                nroDocumento = ViewBag.NroDocumento
+            },
+            new { @class = "btn btn-secondary btn-sm" })
+    }
+</div>

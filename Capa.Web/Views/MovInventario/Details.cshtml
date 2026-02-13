@@ -1,0 +1,55 @@
+﻿@model Capa.Entidad.E_MovInventario
+
+<h2>Detalle Movimiento</h2>
+
+<dl class="dl-horizontal">
+    <dt>Compañía</dt>
+    <dd>@Model.COD_CIA</dd>
+
+    <dt>Compania venta</dt>
+    <dd>@Model.COMPANIA_VENTA_3</dd>
+
+    <dt>Almacen Venta</dt>
+    <dd>@Model.ALMACEN_VENTA</dd>
+
+    <dt>Tipo Movimiento</dt>
+    <dd>@Model.TIPO_MOVIMIENTO</dd>
+
+    <dt>Tipo Documento</dt>
+    <dd>@Model.TIPO_DOCUMENTO</dd>
+
+    <dt>Documento</dt>
+    <dd>@Model.NRO_DOCUMENTO</dd>
+
+    <dt>Item</dt>
+    <dd>@Model.COD_ITEM_2</dd>
+
+    <dt>Proveedor</dt>
+    <dd>@Model.PROVEEDOR</dd>
+
+    <dt>Almacen Destino</dt>
+    <dd>@Model.ALMACEN_DESTINO</dd>
+
+    <dt>Cantidad</dt>
+    <dd>@Model.CANTIDAD</dd>
+
+    <dt>Doc Ref 1</dt>
+    <dd>@Model.DOC_REF_1</dd>
+
+    <dt>Doc Ref 2</dt>
+    <dd>@Model.DOC_REF_2</dd>
+
+    <dt>Doc Ref 3</dt>
+    <dd>@Model.DOC_REF_3</dd>
+
+    <dt>Doc Ref 4</dt>
+    <dd>@Model.DOC_REF_4</dd>
+
+    <dt>Doc Ref 5</dt>
+    <dd>@Model.DOC_REF_5</dd>
+
+    <dt>Fecha Transaccion</dt>
+    <dd>@Model.FECHA_TRANSACCION</dd>
+</dl>
+
+@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-secondary" })
