@@ -45,6 +45,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="E_MovInventario.cs" />
     <Compile Include="E_Paginado.cs" />
+    <Compile Include="MovInventarioDTO.cs" />
     <Compile Include="MovInventarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
